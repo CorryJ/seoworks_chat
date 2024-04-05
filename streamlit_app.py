@@ -42,7 +42,7 @@ if topic := topic:
             Present this all in tabular format."
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
-        st.markdown("Here is the response, hope its useful!")
+        st.markdown("Here is the response....hope its useful!")
 
     with st.chat_message("assistant"):
         stream = client.chat.completions.create(

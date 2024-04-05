@@ -37,9 +37,10 @@ for message in st.session_state.messages:
 
 
 if topic := topic:
-    prompt = "You are a categorisation GPT. Your topic is "+"'"+topic+"'. "+"You will create a 3 column table. For the "+"'"+topic+"'"+"create a list of user personas. Put these in the first column of the table. Then list at least 20 keywords \
-          for each user persona. Put these in the second column of the table. Finally list the most important questions that each of the personas may have on the topic. Put these in the third column of the table.
-        "
+    prompt = "You are a categorisation GPT. Your topic is "+"'"+topic+"'. "+"You will create a 3 column table. For the "+"'"+topic+"'"+"create a list of user personas. \
+    Put these in the first column of the table. Then list at least 20 keywords \
+          for each user persona. Put these in the second column of the table. Finally list the most important questions that each of the personas may have on the topic. \
+          Put these in the third column of the table."
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown("Here is the response....hope its useful!")

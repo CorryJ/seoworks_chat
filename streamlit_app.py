@@ -1,40 +1,57 @@
-import altair as alt
-import numpy as np
-import pandas as pd
+from openai import OpenAI
 import streamlit as st
+from streamlit_js_eval import streamlit_js_eval
 
-"""
-# Welcome to Streamlit!
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:.
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+# Setting page title and header
+st.set_page_config(page_title="The SEO Works category helper", page_icon="https://www.seoworks.co.uk/wp-content/themes/seoworks/assets/images/fav.png", layout="wide",    menu_items={
+        'Get Help': 'https://www.seoworks.co.uk',
+        'Report a bug': "mailto:james@seoworks.co.uk",
+        'About': "Let us know what you think of the app?"
+    },initial_sidebar_state="expanded")
+st.title("The SEO Works Category Helper")
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+# Sidebar configuration
+st.sidebar.image("https://www.seoworks.co.uk/wp-content/themes/seoworks/assets/logos/Seoworks-Logo-Light.svg")
+topic = st.sidebar.text_input("Enter your topic")
 
-num_points = st.slider("Number of points in spiral", 1, 10000, 1100)
-num_turns = st.slider("Number of turns in spiral", 1, 300, 31)
+with st.sidebar:
+    if st.button("Clear output"):
+        streamlit_js_eval(js_expressions="parent.window.location.reload()")
 
-indices = np.linspace(0, 1, num_points)
-theta = 2 * np.pi * num_turns * indices
-radius = indices
+#  api_key = st.sidebar.text_input("Enter your api key")
 
-x = radius * np.cos(theta)
-y = radius * np.sin(theta)
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"]) 
 
-df = pd.DataFrame({
-    "x": x,
-    "y": y,
-    "idx": indices,
-    "rand": np.random.randn(num_points),
-})
+#  client = OpenAI(api_key=api_key) 
 
-st.altair_chart(alt.Chart(df, height=700, width=700)
-    .mark_point(filled=True)
-    .encode(
-        x=alt.X("x", axis=None),
-        y=alt.Y("y", axis=None),
-        color=alt.Color("idx", legend=None, scale=alt.Scale()),
-        size=alt.Size("rand", legend=None, scale=alt.Scale(range=[1, 150])),
-    ))
+if "openai_model" not in st.session_state:
+    st.session_state["openai_model"] = "gpt-3.5-turbo"
+
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+
+if topic := topic:
+    prompt = "You are a categorisation GPT. Your topic is "+"'"+topic+"'. "+"For the topic create a list of user personas. Put these in the first column. Then list at least 20 keywords \
+          for each user persona. Put these in the second column. Finally list the most important questions that each of the personas may have on the topic. Put these in the third column.\
+            Present this all in tabular format."
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.markdown("Here is the response, hope its useful!")
+
+    with st.chat_message("assistant"):
+        stream = client.chat.completions.create(
+            model=st.session_state["openai_model"],
+            messages=[
+                {"role": m["role"], "content": m["content"]}
+                for m in st.session_state.messages
+            ],
+            stream=True,
+        )
+        response = st.write_stream(stream)
+    st.session_state.messages.append({"role": "assistant", "content": response})

@@ -52,12 +52,5 @@ if topic := topic:
         
         response = st.write_stream(stream)
 
-    st.session_state.messages.append({"role": "assistant", "content": response})
-
-st.download_button(
-label="Download data as CSV",
-data=response,
-file_name='result.csv',
-mime='text/csv',
-)
+        st.session_state.messages.append({"role": "assistant", "content": response})
 

@@ -9,17 +9,21 @@ st.set_page_config(page_title="The SEO Works category helper", page_icon="https:
         'Report a bug': "mailto:james@seoworks.co.uk",
         'About': "Let us know what you think of the app?"
     },initial_sidebar_state="expanded")
-st.title("The SEO Works Category Helper")
 
-# Sidebar configuration
-st.sidebar.image("https://www.seoworks.co.uk/wp-content/themes/seoworks/assets/logos/Seoworks-Logo-Light.svg")
-topic = st.sidebar.text_input("Enter your topic")
 
-with st.sidebar:
-    if st.button("Clear output"):
-        streamlit_js_eval(js_expressions="parent.window.location.reload()")
+st.image("resources/SeoWorksLogo-Dark.png",width=250)
+st.title("PersonaPlotter by The SEO Works")
 
-#  api_key = st.sidebar.text_input("Enter your api key")
+
+st.markdown("***PersonaPlotter reveals audience personas with targeted keywords and their most pressing questions.***")
+
+with st.expander("See explanation"):
+    st.write("Introducing PersonaPlotter, the innovative tool designed to help you understand and engage with your target audience. If you are a marketer, product developer or content creator, \
+             PersonaPlotter is a great source of ideas. The tool analyses a given topic to build out user personas, each brought to life with keywords and questions they might have about your \
+             topic of interest. Just enter your topic and go!")
+
+topic = st.text_input("Enter your topic")
+
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"]) 
 
@@ -30,11 +34,6 @@ if "openai_model" not in st.session_state:
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
-
-#for message in st.session_state.messages:
-  #  with st.chat_message("user"):
-  #     st.markdown("")
-
         
 if topic := topic:
     prompt = "You are a categorisation GPT. Your topic is "+"'"+topic+"'. "+"For the "+"'"+topic+"'"+"create 5 user personas. \
@@ -55,6 +54,8 @@ if topic := topic:
             ],
             stream=True,
         )
+        
         response = st.write_stream(stream)
 
     st.session_state.messages.append({"role": "assistant", "content": response})
+

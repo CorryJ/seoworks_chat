@@ -31,19 +31,20 @@ if "openai_model" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+#for message in st.session_state.messages:
+  #  with st.chat_message("user"):
+  #     st.markdown("")
 
-
+        
 if topic := topic:
-    prompt = "You are a categorisation GPT. Your topic is "+"'"+topic+"'. "+"You will create a 3 column table. For the "+"'"+topic+"'"+"create a list of user personas. \
-    Put these in the first column of the table. Then list at 20 keywords related to the persona and the topic. \
-          Put these in the second column of the table. Finally make a numbered list of the most important questions that each of the personas may have on the topic. \
-          Put these in the third column of the table."
+    prompt = "You are a categorisation GPT. Your topic is "+"'"+topic+"'. "+"For the "+"'"+topic+"'"+"create 5 user personas. \
+    Put these in the first column of a table. Then give me a list of 20 long tail keywords a content write could use to marke articles for the related to the persona you created and the topic"+"'"+topic+"' . Put these in the second column of the table"+". \
+    Finally make a numbered list of the most important questions that each of the personas may have on the topic. \
+    Put these in the third column of the table. Return the result in a table format "
+    
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
-        st.markdown("Here is the response....hope its useful!")
+        st.markdown("Here is the response, hope its useful!")
 
     with st.chat_message("assistant"):
         stream = client.chat.completions.create(
@@ -55,4 +56,5 @@ if topic := topic:
             stream=True,
         )
         response = st.write_stream(stream)
+
     st.session_state.messages.append({"role": "assistant", "content": response})

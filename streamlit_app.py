@@ -33,7 +33,7 @@ if "messages" not in st.session_state:
         
 if topic := topic:
     prompt = "You are a categorisation GPT. The topic you will work with is "+"'"+topic+"'. "+". You will now create a table. In the first column create 5 user persona's for the topic"+"('"+topic+")'"+"\
-    .In the second column of the table create a numbered list of 20 long tail keywords each user persona will use for the topic "+"'"+topic+"'. \
+    .In the second column of the table create a numbered list of 20 long tail keywords each user persona will use for the topic "+"'"+topic+"'. The title of the second column must be 'Search phrases'.\
     In the third column make a numbered list of the most important questions that each of the personas may have on the topic. Return the results in a table format."
     
     st.session_state.messages.append({"role": "user", "content": prompt})

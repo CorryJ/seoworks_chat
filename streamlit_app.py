@@ -35,7 +35,7 @@ if topic := topic:
     prompt = "You are a categorisation GPT. Your topic is "+"'"+topic+"'. "+"For the "+"'"+topic+"'"+"create 5 user personas. \
     Put these in the first column of a table. Then give me a list of 20 long tail keywords a content write could use to marke articles for the related to the persona you created and the topic"+"'"+topic+"' . Put these in the second column of the table"+". \
     Finally make a numbered list of the most important questions that each of the personas may have on the topic. \
-    Put these in the third column of the table. Return the result in a table format "
+    Put these in the third column of the table. Always return the result in a table format "
     
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):

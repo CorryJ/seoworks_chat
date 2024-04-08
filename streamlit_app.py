@@ -32,10 +32,9 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
         
 if topic := topic:
-    prompt = "You are a categorisation GPT. The topic you will work with is "+"'"+topic+"'. "+". You will now create a table. In the first column create 5 user personnas for the topic"+"('"+topic+")'"+"\
-    . In the second column create a numbered list of 20 long keywords or search phrases each user persona you created may use for the topic "('"+topic+"')''  \
-    Finally make a numbered list of the most important questions that each of the personas may have on the topic. \
-    Put these in the third column of the table. Always return the result in a table format "
+    prompt = "You are a categorisation GPT. The topic you will work with is "+"'"+topic+"'. "+". You will now create a table. In the first column create 5 user persona's for the topic"+"('"+topic+")'"+"\
+    .In the second column of the table create a numbered list of 20 long tail keywords each user persona will use for the topic "+"'"+topic+"'. \
+    In the third column make a numbered list of the most important questions that each of the personas may have on the topic. Return the results in a table format."
     
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):

@@ -7,6 +7,6 @@ html, body, [class*="css"] {
     color: #091747;
 }
 
-#GithubIcon {
+GithubIcon {
   visibility: hidden;
 }

@@ -10,8 +10,11 @@ st.set_page_config(page_title="The SEO Works Persona Plotter",
                    page_icon="https://www.seoworks.co.uk/wp-content/themes/seoworks/assets/images/fav.png", 
                    layout="wide",initial_sidebar_state="collapsed")
 
+#Defines custom css file
 with open( "resources/style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
+file_name="resources/style.css"
+
 # custom styling to remove red bar at top
 st.markdown("""
 <style>
@@ -19,8 +22,7 @@ st.markdown("""
 		display: none;
 	}
 </style>                
-            """,
-unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
 
@@ -35,8 +37,8 @@ with col3:
    st.header("")
 
 
-st.markdown('<div style="text-align: center; font-size:40px;">PersonaPlotter by The SEO Works</div>', unsafe_allow_html=True)
-st.markdown('<div style="text-align: center; font-size:20px;">PersonaPlotter reveals audience personas with targeted keywords and their most pressing questions.</div>', unsafe_allow_html=True)
+st.markdown('<div style="text-align: center; font-size:36px;"><strong>PersonaPlotter by The SEO Works<strong></div>', unsafe_allow_html=True)
+st.markdown('<div style="text-align: center; font-size:22px;">PersonaPlotter reveals audience personas with targeted keywords and their most pressing questions.</div>', unsafe_allow_html=True)
 
 # Spacers for layout purposes
 st.write("#")
@@ -96,7 +98,16 @@ st.divider()
 # Spacers for layout purposes
 st.write("#")
 
+
 st.markdown('<div style="text-align: center; font-size:30px;"><strong>About The SEO Works<strong></div>', unsafe_allow_html=True)
 st.markdown('<div style="text-align: center; font-size:22px;">We are the Digital Growth Experts. As an award-winning provider of digital \
             marketing and websites to leading brands, we have worked for more than a decade with one key goal in mind - to get businesses more \
             customers online. Find out more <a href ="https://www.seoworks.co.uk/" target="_blank" > about us</a>.</div>', unsafe_allow_html=True)
+
+
+#with st.container():
+ #  seoworks_url = "https://www.seoworks.co.uk/"
+  # st.write("We are the Digital Growth Experts. As an award-winning provider of digital \
+   #         marketing and websites to leading brands, we've worked for more than a decade \
+   #         with one key goal in mind - to get businesses more customers online. Find out more [about us](%s)"% seoworks_url)
+

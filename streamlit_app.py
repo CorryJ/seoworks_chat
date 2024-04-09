@@ -22,6 +22,7 @@ st.markdown("""
             """,
 unsafe_allow_html=True)
 
+st.markdown(hide_github_icon, unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
 

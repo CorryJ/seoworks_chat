@@ -1,8 +1,6 @@
 from openai import OpenAI
 import streamlit as st
-from streamlit_js_eval import streamlit_js_eval
 import time
-
 
 
 # Setting page title and header
@@ -45,10 +43,23 @@ st.write("#")
 # st.header("PersonaPlotter by The SEO Works")
 # st.markdown("***PersonaPlotter reveals audience personas with targeted keywords and their most pressing questions.***")
 
+st.markdown(
+        """
+        <style>
+        .stMarkdownContainer p {
+            font-size: 20px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 with st.expander("How it works"):
-    st.write("Introducing ***PersonaPlotter***, the innovative tool designed to help you understand and engage with your target audience. If you are a marketer, product developer or content creator, \
-             ***PersonaPlotter*** is a great source of ideas. The tool analyses a given topic to build out user personas, each brought to life with keywords and questions they might have about your \
+    st.write("Introducing PersonaPlotter, the innovative tool designed to help you understand and engage with your target audience. If you are a marketer, product developer or content creator, \
+             PersonaPlotter is a great source of ideas. The tool analyses a given topic to build out user personas, each brought to life with keywords and questions they might have about your \
              topic of interest. Just enter your topic and go!")
+
 
 topic = st.text_input("Enter your topic", placeholder="Add your topic and press enter")
 
@@ -71,7 +82,8 @@ if topic := topic:
 
     with st.status("Plotting Personas...", expanded = True, state="running") as status:
         time.sleep(1)
-        st.write("Not be long..")
+        # st.write("Not be long..")
+        status.update(label="Working on it, not be long", state="running", expanded=False)
         time.sleep(2)
         status.update(label="Done!", state="complete", expanded=False)
     

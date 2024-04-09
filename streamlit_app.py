@@ -97,6 +97,6 @@ st.divider()
 st.write("#")
 
 st.markdown('<div style="text-align: center; font-size:30px;"><strong>About The SEO Works<strong></div>', unsafe_allow_html=True)
-st.markdown('<div style="text-align: center; font-size:22px;">We are the Digital Growth Experts4. As an award-winning provider of digital \
+st.markdown('<div style="text-align: center; font-size:22px;">We are the Digital Growth Experts. As an award-winning provider of digital \
             marketing and websites to leading brands, weve worked for more than a decade with one key goal in mind - to get businesses more \
             customers online. Find out more <a href ="https://www.seoworks.co.uk/" target="_blank" > about us</a>.</div>', unsafe_allow_html=True)

@@ -11,9 +11,7 @@ st.set_page_config(page_title="The SEO Works Persona Plotter",
                    layout="wide",initial_sidebar_state="collapsed")
 
 with open( "resources/style.css" ) as css:
-	st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True),
-	
-	
+    st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 # custom styling to remove red bar at top
 st.markdown("""
 <style>
@@ -23,8 +21,6 @@ st.markdown("""
 </style>                
             """,
 unsafe_allow_html=True)
-
-
 
 col1, col2, col3 = st.columns(3)
 
@@ -101,9 +97,8 @@ st.divider()
 st.write("#")
 
 st.markdown('<div style="text-align: center; font-size:30px;"><strong>About The SEO Works<strong></div>', unsafe_allow_html=True)
+
 with st.container():
    st.write("We are the Digital Growth Experts. As an award-winning provider of digital \
             marketing and websites to leading brands, we've worked for more than a decade \
             with one key goal in mind - to get businesses more customers online. Find out more about us (link to https://www.seoworks.co.uk/)")
-
-

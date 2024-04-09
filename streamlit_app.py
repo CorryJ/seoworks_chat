@@ -22,9 +22,6 @@ st.markdown("""
             """,
 unsafe_allow_html=True)
 
-GithubIcon {
-  visibility: hidden;
-}
 
 col1, col2, col3 = st.columns(3)
 

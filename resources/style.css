@@ -8,7 +8,7 @@ html, body, [class*="css"] {
 }
 
 hide_github_icon = """
-GithubIcon {
+#GithubIcon {
   visibility: hidden;
 }
 """

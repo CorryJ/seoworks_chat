@@ -1,5 +1,3 @@
-altair
-pandas
 streamlit
 openai
 streamlit_js_eval

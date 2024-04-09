@@ -47,7 +47,7 @@ st.write("#")
 
 with st.expander("How it works"):
     st.write("Introducing ***PersonaPlotter***, the innovative tool designed to help you understand and engage with your target audience. If you are a marketer, product developer or content creator, \
-             PersonaPlotter is a great source of ideas. The tool analyses a given topic to build out user personas, each brought to life with keywords and questions they might have about your \
+             ***PersonaPlotter*** is a great source of ideas. The tool analyses a given topic to build out user personas, each brought to life with keywords and questions they might have about your \
              topic of interest. Just enter your topic and go!")
 
 topic = st.text_input("Enter your topic", placeholder="Add your topic and press enter")

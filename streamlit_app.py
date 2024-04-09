@@ -99,6 +99,7 @@ st.write("#")
 st.markdown('<div style="text-align: center; font-size:30px;"><strong>About The SEO Works<strong></div>', unsafe_allow_html=True)
 
 with st.container():
+   seoworks_url = "https://www.seoworks.co.uk/"
    st.write("We are the Digital Growth Experts. As an award-winning provider of digital \
             marketing and websites to leading brands, we've worked for more than a decade \
-            with one key goal in mind - to get businesses more customers online. Find out more about us (link to https://www.seoworks.co.uk/)")
+            with one key goal in mind - to get businesses more customers online. Find out more [about us](%s)."% seoworks_url)

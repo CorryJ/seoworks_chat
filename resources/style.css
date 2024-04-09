@@ -7,3 +7,8 @@ html, body, [class*="css"] {
     color: #091747;
 }
 
+hide_github_icon = """
+#GithubIcon {
+  visibility: hidden;
+}
+"""

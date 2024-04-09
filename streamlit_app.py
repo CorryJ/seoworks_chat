@@ -12,7 +12,7 @@ st.set_page_config(page_title="The SEO Works Persona Plotter",
 
 with open( "resources/style.css" ) as css:
 	st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True),
-	st.markdown(hide_github_icon, unsafe_allow_html=True)
+	
 	
 # custom styling to remove red bar at top
 st.markdown("""

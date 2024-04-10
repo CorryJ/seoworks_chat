@@ -7,4 +7,9 @@ html, body, [class*="css"] {
     color: #091747;
 }
 
-
+.st-emotion-cache-l9bjmx p {
+    word-break: break-word;
+    margin-bottom: 0px;
+    font-size: 22px;
+    font-weight: 700;
+}
